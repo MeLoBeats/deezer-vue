@@ -10,6 +10,11 @@ app.get('/playlists', async (request, reply) => {
     reply.send(response.body)
 })
 
+app.get('/playlist/:id', async (request, reply) => {
+    const response = await got('https://api.deezer.com/playlist/' + request.params.id)
+    reply.send(response.body)
+})
+
 app.listen({
     port: 3000,
 }, (err, address) => {
